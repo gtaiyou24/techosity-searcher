@@ -1,0 +1,42 @@
+{% extends "_layout.html" %}
+{% block content %}
+<div class="container-fluid background">
+    <!-- ヘッダー -->
+    <div class="row">
+        <!-- 戻る -->
+        <div class="col-md-2">
+            <a href="/">
+                <img src="/static/img/Left-Arrow-256.png" style="width: 48px; height: 48px; margin: 30px; margin-left: 200px;">
+            </a>
+        </div>
+
+        <!-- 検索フォーム -->
+        <div class="col-md-6">
+            <form action="/search" method="get" style="margin: 30px; 0px; 30px; 0px;">
+                <div class="input-group mb-3">
+                  <input type="text" name="q" value="{{ q }}" class="form-control form-control-lg" placeholder="Python,機械学習,会社名,...">
+                  <button class="btn btn-outline-secondary text-white" type="submit">検索</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 検索結果 -->
+    <div class="row">
+        <div class="col-md-6 offset-md-2">
+        {% for blog in blog_list %}
+            <a href="{{ blog.url }}"><h4>{{ blog.title }}</h4></a>
+            <p class="paragraph">{{ blog.description }}</p>
+        {% endfor %}
+        </div>
+    </div>
+
+    <!-- ページネーション -->
+    <div class="row">
+        <div class="col-md-6 offset-md-2">
+            <a href="/search/?q={{ q }}&start={{ prev }}">前のページへ</a>
+            <a href="/search/?q={{ q }}&start={{ next }}">次のページへ</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+.background {
+    background-color: #0f0e17;
+    min-height: 100vh;
+}
+
+.headline {
+    color: #fffffe;
+}
+
+.paragraph {
+    color: #a7a9be;
+}
+
+.button {
+    color: #fffffe;
+    background-color: #ff8906;
+}

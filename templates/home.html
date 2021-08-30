@@ -1,0 +1,17 @@
+{% extends "_layout.html" %}
+{% block content %}
+<div class="container-fluid" style="min-height: 100vh; background-image: url(/static/img/mohammad-rahmani-N5bT5RctFZ8-unsplash.jpg); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+    <div class="row">
+        <div class="col-md-6 text-center mx-auto" style="margin:300px">
+            <h1 class="headline">Techosity</h1>
+            <p class="paragraph">テックブログ検索サイト</p>
+            <form action="/search" method="get">
+                <div class="input-group mb-3">
+                  <input type="text" name="q" class="form-control form-control-lg" placeholder="Python,機械学習,会社名,...">
+                  <button class="btn btn-outline-secondary text-white" type="submit">検索</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

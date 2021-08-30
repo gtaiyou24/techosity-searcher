@@ -1,0 +1,9 @@
+*.pyc
+.DS_Store
+venv
+
+# PyCharm
+.idea
+
+# Secret
+.env
