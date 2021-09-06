@@ -1,5 +1,5 @@
-from .searched_blog_ids_dpo import SearchedBlogIdsDpo
+from .searched_blog_ids_dpo import SearchedBlogsDpo
 
 __all__ = [
-    "SearchedBlogIdsDpo"
+    "SearchedBlogsDpo"
 ]

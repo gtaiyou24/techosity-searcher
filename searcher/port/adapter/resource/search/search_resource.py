@@ -16,13 +16,12 @@ def search() -> str:
     q: str = str(request.args.get("q"))
     start: int = int(request.args.get("start", 0))
 
-    searched_blog_ids_dpo = search_application_service.search_blog(q, start)
-    blog_list_dpo = blog_application_service.get_list(searched_blog_ids_dpo.ids())
+    searched_blogs_dpo = search_application_service.search_blog(q, start)
 
     model: dict = {
         'q': q,
         'prev': max(start - 10, 0),
         'next': start + 10,
-        'blog_list': [blog_dpo.to_dict() for blog_dpo in blog_list_dpo.list]
+        'blog_list': [blog for blog in searched_blogs_dpo.blog_list()]
     }
     return render_template("search.html", **model)

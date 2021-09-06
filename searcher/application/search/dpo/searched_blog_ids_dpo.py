@@ -1,16 +1,14 @@
-from dataclasses import dataclass
 from typing import List
 
-from domain.model.blog import BlogId
+from domain.model.blog import Blog
 
 
-@dataclass(init=False, frozen=True, unsafe_hash=True)
-class SearchedBlogIdsDpo:
-    _blog_id_list: List[BlogId]
+class SearchedBlogsDpo:
 
-    def __init__(self, blog_id_list: List[BlogId]):
-        assert blog_id_list is not None, "引数blog_id_listは必須です。"
-        super().__setattr__("_blog_id_list", blog_id_list)
+    def __init__(self, blog_list: List[Blog]):
+        assert blog_list is not None, "引数blog_id_listは必須です。"
+        self.__blog_list = blog_list
 
-    def ids(self) -> List[str]:
-        return [blog_id.id for blog_id in self._blog_id_list]
+    def blog_list(self) -> list[dict[str, str]]:
+        return [{'id': blog.id(), 'title': blog.title(), 'description': blog.description(), 'url': blog.url()} \
+                for blog in self.__blog_list]
