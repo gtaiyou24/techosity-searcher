@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request
 
-from application.blog import BlogApplicationService
 from application.search import SearchApplicationService
 from di import DIManager
 
@@ -8,7 +7,6 @@ SearchResource = Blueprint('search', __name__, url_prefix='/search')
 
 di_manager = DIManager()
 search_application_service = di_manager.get(SearchApplicationService)
-blog_application_service = di_manager.get(BlogApplicationService)
 
 
 @SearchResource.route('/')

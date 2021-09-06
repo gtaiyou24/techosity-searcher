@@ -10,4 +10,4 @@ WORKDIR $project_dir
 
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-ENTRYPOINT ["python", "start_flask.py"]
+#ENTRYPOINT ["python", "start_flask.py"]
