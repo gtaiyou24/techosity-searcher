@@ -33,9 +33,10 @@ class ElasticSearchBlogSearcher(BlogSearcher):
             from_=start
         )
 
-        log.debug(search_result)
-
+        blog_list = []
         for document in search_result['hits']['hits']:
-            print(document)
+            blog_list.append(Blog.of(
+                str(document['_id']), str(document['_source']['title']),
+                str(document['_source']['description']), str(document['_source']['url'])))
 
-        return [Blog.of(str(i), 'title is ' + str(i), 'desc ' + str(i), 'http://hoge.com/blogs/' + str(i)) for i in range(1 + start, 11 + start)]
+        return blog_list

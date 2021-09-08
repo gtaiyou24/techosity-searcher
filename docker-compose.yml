@@ -1,25 +1,24 @@
 version: "3.4"
 
 services:
-  # Searcher
   searcher:
     build: ./searcher
     container_name: searcher
     env_file:
       - ./searcher/.env
     ports:
-      - 5000:5000
+      - "5000:5000"
 
-  # ElasticSearch
   elasticsearch:
     build: ./elasticsearch
     container_name: elasticsearch
     env_file:
       - ./elasticsearch/.env
     ports:
-      - 9200:9200
+      - "9200:9200"
     volumes:
-      - elasticsearch:/var/lib/elasticsearch
+      - elasticsearch-volume:/usr/share/elasticsearch/data
 
 volumes:
-  elasticsearch:
+  elasticsearch-volume:
+    driver: 'local'
