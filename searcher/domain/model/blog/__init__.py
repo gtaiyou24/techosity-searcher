@@ -4,5 +4,5 @@ from .blog_title import BlogTitle
 
 from .blog import Blog
 
-from .blog_searcher import BlogSearcher
+from .blog_index import BlogIndex
 from .blog_repository import BlogRepository

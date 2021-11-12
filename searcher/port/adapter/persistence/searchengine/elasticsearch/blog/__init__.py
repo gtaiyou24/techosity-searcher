@@ -1,0 +1,1 @@
+from .elasticsearch_blog_index_searcher import ElasticSearchBlogIndex

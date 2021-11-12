@@ -3,14 +3,14 @@ from typing import List
 from injector import inject, singleton
 
 from application.search.dpo import SearchedBlogsDpo
-from domain.model.blog import BlogSearcher, Blog
+from domain.model.blog import BlogIndex, Blog
 
 
 @singleton
 class SearchApplicationService:
 
     @inject
-    def __init__(self, blog_searcher: BlogSearcher):
+    def __init__(self, blog_searcher: BlogIndex):
         self.__blog_searcher = blog_searcher
 
     def search_blog(self, query: str, start: int) -> SearchedBlogsDpo:

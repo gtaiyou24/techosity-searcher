@@ -1,6 +1,7 @@
 version: "3.4"
 
 services:
+  # App
   searcher:
     build: ./searcher
     container_name: searcher
@@ -9,6 +10,21 @@ services:
     ports:
       - "5000:5000"
 
+  # RabbitMQ
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    tty: true
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"    # standard AMQP protocol port
+      - "15672:15672"  # HTTP management UI
+    environment:
+      - ./rabbitmq/.env
+    volumes:  # データを永続化
+      - rabbitmq-volume:/var/lib/rabbitmq
+
+  # ElasticSearch
   elasticsearch:
     build: ./elasticsearch
     container_name: elasticsearch
@@ -20,5 +36,7 @@ services:
       - elasticsearch-volume:/usr/share/elasticsearch/data
 
 volumes:
+  rabbitmq-volume:
+    driver: 'local'
   elasticsearch-volume:
     driver: 'local'

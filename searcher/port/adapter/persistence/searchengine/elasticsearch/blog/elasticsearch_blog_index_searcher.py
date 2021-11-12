@@ -2,12 +2,12 @@ from typing import NoReturn, List
 
 from elasticsearch import Elasticsearch
 
-from domain.model.blog import Blog, BlogSearcher
+from domain.model.blog import Blog, BlogIndex
 from exception import SystemException, ErrorCode
 from logger import log
 
 
-class ElasticSearchBlogSearcher(BlogSearcher):
+class ElasticSearchBlogIndex(BlogIndex):
     INDEX_NAME = 'blogs'
 
     def __init__(self):
@@ -40,3 +40,12 @@ class ElasticSearchBlogSearcher(BlogSearcher):
                 str(document['_source']['description']), str(document['_source']['url'])))
 
         return blog_list
+
+    def add(self, blog: Blog) -> NoReturn:
+        log.debug("BlogをElasticSearchに保存します")
+        # ドキュメントの登録
+        result = self.__client.create(
+            index=self.INDEX_NAME, id=blog.id(),
+            body={"title": blog.title(), "description": blog.description(), "url": blog.url()}
+        )
+        log.debug("{}".format(result))

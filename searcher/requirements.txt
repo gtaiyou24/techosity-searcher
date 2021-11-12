@@ -1,4 +1,14 @@
 Flask==1.1.2  # Flask
-cachetools==4.2.1  # キャッシュ
-injector==0.18.4  # DI(Dependency Injection/依存性注入)
-elasticsearch==7.14.1  # ElasticSearch
+
+# キャッシュ
+cachetools==4.2.1
+
+# DI(Dependency Injection/依存性注入)
+injector==0.18.4
+
+# ElasticSearch
+elasticsearch==7.14.1
+
+# MQ(Message Queue)
+pika==1.2.0
+pika-stubs==0.1.3
